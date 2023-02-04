@@ -42,3 +42,19 @@ Don't use the reference function in the variables section of a template. The ref
 There are two features of Azure Resource Manager (ARM) templates that you'll want to use when you deploy to more than one Azure environment. These features are resource tags and ARM template parameter files.
 
 As you add more resources to your environments, you'll quickly find that you need a way to identify the purpose of these resources. Resources have a tags: attribute for this purpose. As you deploy to more environments, you'll need an efficient way to keep track of the input parameters. ARM templates can use parameter files to manage parameters for each deployment environment.
+
+Azure Resource Manager supports two deployment modes: incremental and complete.
+Incremental mode
+
+The default deployment mode is incremental. In this mode, Resource Manager won't delete anything. If resources exist in the resource group but aren't specified in the template, Resource Manager leaves them alone. Resources in the template are added to the resource group if they don't already exist, and if they do exist, Resource Manager updates them to the configuration in the template.
+Complete mode
+
+You have to explicitly ask for your deployment to run in complete mode. When you use this mode, resources that exist in Azure but that aren't specified in the template are deleted. Complete mode won't delete all resources in your resource group. Some resource types are exempt.
+
+Complete mode is available when you deploy to a resource group. If you use templates to deploy resources to a subscription, management group, or a tenant, you won't be able to use complete mode.
+
+If you don't need to know all of the change types, you can use the --what-if-exclude-change-types argument to omit the types you're not interested in.
+
+To preview changes before deploying a template, use the --confirm-with-what-if argument with the deployment command. If the changes are as you expected, acknowledge that you want the deployment to finish.
+
+If you use Bicep to write your code, we recommend you don't use the ARM-TTK. Instead, you should use the Bicep linter.
