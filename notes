@@ -1,3 +1,5 @@
+https://learn.microsoft.com/en-us/training/paths/deploy-manage-resource-manager-templates/
+
 Infrastructure as code enables you to describe, through code, the infrastructurethat you need for your application.
 With infrastructure as code, you can maintain both your application code and everything you need to deploy your application in a central code repository. 
 The advantages to infrastructure as code are:
