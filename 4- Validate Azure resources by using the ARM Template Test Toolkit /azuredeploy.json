@@ -1,16 +1,13 @@
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-       "location": {
-          "type": "string",
-          "defaultValue": "[resourceGroup().location]",
-          "metadata": {
-             "description": "Location for the resources."
-          }
-       }
-    },
-    "resources": [{
-       "location": "[parameters('location')]"
-    }]
- }
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "tailWindlocation": {
+      "type": "string",
+      "metadata": {
+        "description": "a deployment location"
+      }
+    }
+  },
+  "resources": []
+}
