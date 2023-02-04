@@ -1,0 +1,36 @@
+Infrastructure as code enables you to describe, through code, the infrastructurethat you need for your application.
+With infrastructure as code, you can maintain both your application code and everything you need to deploy your application in a central code repository. 
+The advantages to infrastructure as code are:
+
+Consistent configurations
+Improved scalability
+Faster deployments
+Better traceability
+
+ARM templates are idempotent, which means you can deploy the same template many times and get the same resource types in the same state.
+
+Resource Manager orchestrates the deployment of the resources so they're created in the correct order. When possible, resources will also be created in parallel, so ARM template deployments finish faster than scripted deployments.
+
+The difference between az deployment group create and az group deployment create is that az group deployment create is an old command to be deprecated and will be replaced by az deployment group create. Therefore, it is recommended to use az deployment group create to deploy resources under the resource group scope.
+
+Use linked templates to deploy complex solutions. You can break a template into many templates and deploy these templates through a main template. When you deploy the main template, it triggers the deployment of the linked template. You can store and secure the linked template by using a SAS token.
+
+Recommendations for using parameters
+
+Use parameters for settings that vary according to the environment; for example, SKU, size, or capacity. Also use parameters for resource names that you want to specify yourself for easy identification or to comply with internal naming conventions. Provide a description for each parameter, and use default values whenever possible.
+
+For security reasons, never hard code or provide default values for usernames and/or passwords in templates. Always use parameters for usernames and passwords (or secrets). Use secureString for all passwords and secrets. If you pass sensitive data in a JSON object, use the secureObject type. Template parameters with secureString or secureObject types can't be read or harvested after the deployment of the resource.
+
+Use outputs in an ARM template
+
+Here's an example to output the storage account's endpoints.
+JSON
+
+"outputs": {
+  "storageEndpoint": {
+    "type": "object",
+    "value": "[reference('learntemplatestorage123').primaryEndpoints]"
+  }
+}
+
+Notice the reference part of the expression. This function gets the runtime state of the storage account.
