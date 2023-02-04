@@ -23,13 +23,15 @@
         }
    },
     "functions": [],
-    "variables": {},
+    "variables": {
+        "storageName": "[toLower(concat(parameters('storagePrefix'),uniqueString(resourceGroup().id)))]"
+    },
     "resources": [{
-        "name": "[toLower(concat(parameters('storagePrefix'),uniqueString(resourceGroup().id)))]",
+        "name": "[variables('storageName')]",
         "type": "Microsoft.Storage/storageAccounts",
         "apiVersion": "2019-06-01",
         "tags": {
-            "displayName": "[toLower(concat(parameters('storagePrefix'),uniqueString(resourceGroup().id)))]"
+            "displayName": "[variables('storageName')]"
         },
         "location": "[resourceGroup().location]",
         "kind": "StorageV2",
