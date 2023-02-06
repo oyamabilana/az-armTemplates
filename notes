@@ -62,3 +62,15 @@ If you use Bicep to write your code, we recommend you don't use the ARM-TTK. Ins
 Nested template refers to the act of embedding template syntax within a main template. Nested templates allow for advanced deployment scenarios like deploying to multiple Azure Resource Manager scopes or multiple resource groups from a single template file. Unlike linked templates, where each template is stored in its own template files, nested templates allow you to store many individual templates in one file. There are several reasons why you might want to do this, such as when you're deploying resources to multiple resource groups or deployment scopes.
 
 When you're using a nested template, you can specify whether template expressions are evaluated within the scope of the parent template or the nested template. The scope determines how parameters, variables, and functions like resourceGroup and subscription are resolved.
+
+Shared access signatures or SAS tokens are used to provides secure delegated access to resources in your storage account without compromising the security of your data.
+
+Deployment scripts in Azure Resource Manager templates (ARM templates) enable custom automation for your environment management. You use deployment scripts to execute your own scripts within your ARM template deployments.
+
+Example scenario
+
+Suppose you're a member of a cross-functional team that supports an application. Your team has adopted ARM templates for creating and managing the environments for your application. Part of the application environment includes staging some assets in a storage account. You've decided to use a deployment script to ensure that the storage account has the required assets.
+
+A deploymentScripts resource takes a user-provided script (either from the template or by URI) and possibly some supporting scripts, and runs them in an Azure container instance. That container instance is assigned the managed identity that you provide.
+
+One benefit of using environment variables is that you can use the secureValue option for secrets that might need to be passed in to deployment scripts.
